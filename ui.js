@@ -14,7 +14,7 @@ export function renderCharacters(char, container) {
 }
 
 export function showLoading(container, loading) {
-  container.innerContent = leading ? "Loading..." : "";
+  container.innerContent = loading ? "Loading..." : "";
 }
 
 export function showError(container, msg) {

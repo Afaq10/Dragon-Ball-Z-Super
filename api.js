@@ -1,4 +1,4 @@
-const BASE_URL = "https://www.dragonball-api.com/api";
+const BASE_URL = "https://dragonball-api.com/api";
 
 async function request(endpoint, { method = "GET", body = null } = {}) {
   const res = await fetch(`${BASE_URL}/${endpoint}`, {
@@ -14,7 +14,6 @@ async function request(endpoint, { method = "GET", body = null } = {}) {
 }
 
 export function getCharacters() {
-  console.log(request("characters"));
   return request("characters");
 }
 
