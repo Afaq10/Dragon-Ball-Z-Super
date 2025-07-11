@@ -7,12 +7,14 @@ export function renderCharacters(char, container) {
     div.className = "card";
     div.innerHTML = `
     <img class= "char-img" src="${c.image}" alt="${c.name}" />
+    <div class="inner-card">
     <h2>${c.name}</h2>
-    <p>Gender: ${c.gender}</p>
-    <p>Race: ${c.race}</p>
-    <p>Base KI: ${c.ki}</p>
-    <p>Max KI: ${c.maxKi}</p>
-    <p>Affiliation: ${c.affiliation}</p>
+    <p><span class="key">Gender:</span> ${c.gender}</p>
+    <p><span class="key">Race:</span> ${c.race}</p>
+    <p><span class="key">Base KI:</span> ${c.ki}</p>
+    <p><span class="key">Max KI:</span> ${c.maxKi}</p>
+    <p><span class="key">Affiliation:</span> ${c.affiliation}</p>
+    </div>
     `;
     frag.appendChild(div);
   });
