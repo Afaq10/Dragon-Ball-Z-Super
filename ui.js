@@ -22,9 +22,22 @@ export function renderCharacters(char, container) {
 }
 
 export function showLoading(container, loading) {
-  container.innerContent = loading ? "Loading..." : "";
+  let spinnerOverlay = document.querySelector(".spinner-overlay");
+  if (loading) {
+    if(!spinnerOverlay) {
+      spinnerOverlay = document.createElement("div");
+      spinnerOverlay.className = "spinner-overlay";
+      spinnerOverlay.innerHTML = `<div class="spinner"><img src="../assets/logo.png" alt="Loading..."></div>`;
+      document.body.appendChild(spinnerOverlay);
+    }
+  } else {
+    if (spinnerOverlay) {
+      spinnerOverlay.style.opacity = "0";
+      setTimeout(() => spinnerOverlay.remove(), 300);
+    }
+  }
 }
 
 export function showError(container, msg) {
-  container.innerContent = `Error: ${msg}`;
+  container.textContent = `Error: ${msg}`;
 }
