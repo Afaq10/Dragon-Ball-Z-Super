@@ -2,8 +2,7 @@ import { getCharacters } from "./api.js";
 import { renderCharacters, appendCharacters, showLoading, showError } from "./ui.js";
 
 let currentPage = 1;
-const initialCards = 12;
-const cardsLimit = 8;
+const cardsLimit = 4;
 let isLoading = true;
 const breakPoint = document.getElementById("break");
 
@@ -13,7 +12,7 @@ document.addEventListener("DOMContentLoaded", init);
 async function init() {
     const container = document.getElementById("characters");
 
-    await loadCharacters(container, initialCards, currentPage);
+    await loadCharacters(container, cardsLimit, currentPage);
 
 
     const observer = new IntersectionObserver((entries) => {
@@ -23,7 +22,7 @@ async function init() {
             }
         });
     }, {
-        threshold: 0.1,
+        threshold: 0.5,
     });
     observer.observe(breakPoint);
 }
