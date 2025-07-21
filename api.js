@@ -13,8 +13,9 @@ async function request(endpoint, { method = "GET", body = null } = {}) {
   return res.json();
 }
 
-export function getCharacters() {
-  return request("characters");
+export function getCharacters(page = 1, limit = 12) {
+  const params = new URLSearchParams({ page, limit });
+  return request(`characters?${params}`);
 }
 
 export function getCharacterById(id) {

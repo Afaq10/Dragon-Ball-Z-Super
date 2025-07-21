@@ -2,7 +2,23 @@ export function renderCharacters(char, container) {
   container.innerHTML = "";
   const frag = document.createDocumentFragment();
   char.forEach(c => {
-    const div = document.createElement("div");
+    const div = createCard(c);
+    frag.appendChild(div);
+  });
+  container.appendChild(frag);
+}
+
+export function appendCharacters(char, container) {
+  const frag = document.createDocumentFragment();
+  char.forEach(c => {
+    const div = createCard(c);
+    frag.appendChild(div);
+  });
+  container.appendChild(frag);
+}
+
+function createCard(c) {
+  const div = document.createElement("div");
     div.id = `${c.id}`;
     div.className = "card";
     div.innerHTML = `
@@ -16,9 +32,7 @@ export function renderCharacters(char, container) {
     <p><span class="key">Affiliation:</span> ${c.affiliation}</p>
     </div>
     `;
-    frag.appendChild(div);
-  });
-  container.appendChild(frag);
+    return div;
 }
 
 export function showLoading(container, loading) {
