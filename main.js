@@ -1,5 +1,7 @@
 import { getCharacters } from "./api.js";
 import { renderCharacters, appendCharacters, showLoading, showError } from "./ui.js";
+import { setupSearch } from "./search.js";
+
 
 let currentPage = 1;
 const cardsLimit = 4;
@@ -25,10 +27,12 @@ async function init() {
         threshold: 0.5,
     });
     observer.observe(breakPoint);
+
+    setupSearch(container);
 }
 
 
-async function loadCharacters(container, limit, page) {
+export async function loadCharacters(container, limit, page) {
     try {
         if (page === 1) {
         showLoading(container, true);
@@ -45,6 +49,7 @@ async function loadCharacters(container, limit, page) {
     }
     } catch (err) {
         showError(container, err.message);
+        breakPoint.style.display = "none";
     } finally {
         isLoading = false;
         showLoading(container, false);
